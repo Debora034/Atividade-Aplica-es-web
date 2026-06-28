@@ -1,0 +1,350 @@
+/*
+ *****LIMPEZA E RESET*****
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth; /*a página desliza suavemente*/
+}
+
+:root {
+  --primaria: #4f46e5;
+  --secundaria: #7c3aad;
+  --escuro: #0f172a;
+  --claro: #e2e8f0;
+  --vidro: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  background-color: var(--escuro);
+  color: var(--claro);
+}
+
+/* 
+***** NAVEGAÇÃO****  
+*/
+.navegacao {
+  position: fixed;
+  top: 0;
+  background: rgba(15, 23, 42, 0.8);
+  width: 100%;
+  font-size: 1.5rem;
+  z-index: 100; /*o menu ficará acima de outros elementos da página,no topo*/
+  padding: 2rem;
+}
+
+.menu {
+  display: flex; /*Os itens ficam lado a lado*/
+  list-style: none; /* Remove as bolinhas da lista */
+  justify-content: center;
+  gap: 3rem;
+}
+
+.menu-link {
+  text-decoration: none;
+  color: var(--claro);
+  font-weight: 500; /*o texto será mais fino ou mais grosso.*/
+  position: relative; /* Mantém o elemento no lugar e permite movê-lo um pouco */
+  padding: 0.5rem 0;
+}
+
+.menu-link:after {
+  content: ""; /*Cria um elemento vazio após o link*/
+  height: 2px;
+  width: 0%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    var(--primaria),
+    var(--secundaria)
+  ); /*Cria um degradê*/
+  transition: width 0.5s ease;
+}
+
+.menu-link:hover::after {
+  width: 100%;
+}
+/*
+ *****CABEÇALHO*****
+*/
+.cabecalho {
+  min-height: 100vh; /* Ocupa toda a altura da tela */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.foto-perfil {
+  width: 350px;
+  height: 350px;
+  max-width: 90%; /* Limita o tamanho em telas menores */
+  object-fit: cover; /* Ajusta a imagem sem distorcer */
+  object-position: center top;
+  border-radius: 50%;
+  border: 4px solid var(--vidro);
+  box-shadow: 0 0 20px rgba(79, 70, 229, 0.3); /* Sombra ao redor da foto */
+  animation: flutuar 5s ease-in-out infinite;
+}
+
+h1 {
+  font-size: 4rem;
+  color: var(--primaria);
+  font-weight: bold;
+  margin: 20px;
+}
+
+.cabecalho-sub-titulo {
+  font-size: 2rem;
+  color: var(--claro);
+}
+/*
+ *****SOBRE MIM*****
+*/
+.sobre {
+  padding: 1rem;
+}
+
+.sobre-titulo {
+  font-size: 3rem;
+  color: var(--claro);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.sobre-caixa {
+  padding: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 16px;
+  border: 1px solid var(--vidro);
+  backdrop-filter: blur(10px); /* Aplica efeito de desfoque ao fundo */
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sobre-paragrafo {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/*
+ *****FORMAÇÃO*****
+*/
+.formacao {
+  padding: 80px 20px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.formacao-titulo {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+}
+
+.tabela-formacao {
+  width: 100%;
+  margin: auto;
+  border-collapse: collapse;
+}
+
+.tabela-formacao th,
+.tabela-formacao td {
+  border: 1px solid white;
+  padding: 15px;
+  text-align: center;
+}
+/*
+ *****PROJETOS*****
+*/
+.projetos {
+  padding: 2rem 2rem;
+}
+
+.projetos-caixa {
+  display: grid; /* Organiza os projetos em grade */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 800px; /* mesmo valor da .sobre-caixa */
+  margin: 0 auto;
+}
+
+.projetos-titulo {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+}
+
+.projetos-imagem {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.projeto-card {
+  background: rgba(255, 255, 255, 0.05);
+  width: 100%;
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  border: 1px solid var(--vidro);
+  overflow: hidden; /* Esconde o conteúdo que ultrapassar */
+  transition: all 0.5s ease;
+  cursor: pointer; /* Mostra a mãozinha ao passar o mouse */
+}
+
+.projeto-card:hover {
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+  transform: translateY(-10px) scale(1.03); /* Move para cima e aumenta um pouco */
+}
+
+.caixa-texto-projeto {
+  padding: 1.5rem;
+}
+
+.paragrafo-projeto {
+  color: rgba(226, 232, 240, 0.8);
+  line-height: 1.25; /* Espaçamento entre linhas */
+}
+
+.info-projetos {
+  margin-bottom: 5px;
+}
+
+/*
+ *****CONTATO*****
+*/
+.contatos {
+  padding: 2rem 2rem;
+}
+
+.contatos-titulo {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+}
+
+.formulario-contato {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+  border: 1px solid var(--vidro);
+  border-radius: 16px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+.formulario-contato:hover {
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+  transform: translateY(-10px) scale(1.03);
+}
+
+.grupo-form {
+  margin-bottom: 1.5rem;
+}
+
+.campo-form {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: var(--claro);
+  border: 1px solid var(--vidro);
+  outline: none;
+}
+
+.campo-form:focus {
+  border-color: var(--secundaria);
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
+}
+
+textarea.campo-form {
+  resize: none;
+  min-height: 150px;
+}
+
+.botao-form {
+  color: var(--claro);
+  background: linear-gradient(45deg, var(--primaria), var(--secundaria));
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+/*
+ *****EFEITOS DE FUNDO*****
+*/
+.particulas {
+  position: fixed; /* o gradiente Fica fixo na tela */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Fica atrás dos outros elementos */
+  opacity: 0.5; /* Deixa o fundo mais transparente */
+  background:
+    radial-gradient(circle at 10% 20%, var(--primaria) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, var(--secundaria) 0%, transparent 20%); /* Cria efeitos no fundo */
+}
+/* 
+***** ANIMAÇÃO****  
+*/
+@keyframes flutuar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20%);
+  }
+}
+/* 
+***** RESPONSIVIDADE****  
+*/
+@media (max-width: 768px) {
+  .navegacao {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .menu {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .foto-perfil {
+    width: 220px;
+    height: 220px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .cabecalho-sub-titulo,
+  .sobre-paragrafo,
+  .formacao {
+    font-size: 1rem;
+  }
+
+  .sobre-titulo,
+  .formacao-titulo,
+  .projetos-titulo,
+  .contatos-titulo {
+    font-size: 2rem;
+  }
+
+  .projetos-caixa {
+    grid-template-columns: 1fr;
+  }
+}
